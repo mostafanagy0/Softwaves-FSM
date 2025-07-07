@@ -1,19 +1,29 @@
-// final getIt = GetIt.instance;
+import 'package:fsm/core/helpers/auth_helper.dart';
+import 'package:fsm/features/auth/data/datasources/Auth_Remote_DataSource_Impl.dart';
+import 'package:fsm/features/auth/data/datasources/auth_remote_datasource.dart';
+import 'package:fsm/features/auth/data/repos/auth_repo_impl.dart';
+import 'package:fsm/features/auth/domain/repos/auth_repo.dart';
+import 'package:fsm/features/auth/presentation/cubit/cubit/auth_cubit.dart';
+import 'package:get_it/get_it.dart';
 
-// Future<void> setup() async {
-//   Dio dio = DioFactory.getDio();
-//   getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
-// //Login
-//   getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
-//   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
+final getIt = GetIt.instance;
 
-//   //SignUp
-//   getIt.registerLazySingleton<SignUpRepo>(() => SignUpRepo(getIt()));
-//   getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt()));
+Future<void> setup() async {
+  // Dio dio = DioFactory.getDio();
 
-//   //Home
-//   getIt.registerLazySingleton<HomeRepoImpl>(() => HomeRepoImpl(getIt()));
+  //auth
+  getIt.registerLazySingleton<AppAuthHelper>(() => AppAuthHelper());
 
-//   //Search
-//   getIt.registerLazySingleton<SearchRepoImp>(() => SearchRepoImp(getIt()));
-// }
+  // Data Source
+  getIt.registerLazySingleton<AuthRemoteDataSource>(
+    () => AuthRemoteDatasourceImpl(authHelper: getIt()),
+  );
+
+  // Repository
+  getIt.registerLazySingleton<AuthRepo>(
+    () => AuthRepoImpl(authRemoteDataSource: getIt()),
+  );
+
+  // Cubit
+  getIt.registerFactory(() => AuthCubit(getIt<AuthRepo>()));
+}
