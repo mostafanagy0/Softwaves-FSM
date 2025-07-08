@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fsm/features/home/presentation/widgets/custom_head_line_and_filtring_widget.dart';
 import 'package:fsm/features/home/presentation/widgets/custom_home_app_bar.dart';
 import 'package:fsm/features/home/presentation/widgets/custom_search_text_filed.dart';
 
@@ -20,7 +21,7 @@ class HomeView extends StatelessWidget {
               SizedBox(height: 8),
               CustomSearchTextFiled(),
               SizedBox(height: 12),
-              Text('Your Tickets'),
+              CustomHeadLineAndFiltringWidget(),
             ],
           ),
         ),

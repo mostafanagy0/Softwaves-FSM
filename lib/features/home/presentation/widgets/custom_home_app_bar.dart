@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fsm/core/utils/styles.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
   const CustomHomeAppBar({super.key});
@@ -21,14 +22,11 @@ class CustomHomeAppBar extends StatelessWidget {
         ),
       ),
       leading: Image.asset('assets/images/Avatar.png'),
-      title: Text(
-        'Hello!',
-        // style: TextStyles.regular16.copyWith(color: const Color(0xFF949D9E)),
-      ),
-      subtitle: const Text(
+      title: Text('Hello!', style: TextStyles.sans12Regular),
+      subtitle: Text(
         'Abdullah',
         // getUser().name,
-        // style: TextStyles.bold16,
+        style: TextStyles.sans16SemiBold,
       ),
     );
   }

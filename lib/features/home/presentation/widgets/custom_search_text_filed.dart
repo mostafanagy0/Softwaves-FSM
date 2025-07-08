@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fsm/core/utils/styles.dart';
 
 class CustomSearchTextFiled extends StatelessWidget {
   const CustomSearchTextFiled({super.key});
@@ -7,6 +8,7 @@ class CustomSearchTextFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 36,
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -27,8 +29,7 @@ class CustomSearchTextFiled extends StatelessWidget {
             ),
           ),
 
-          //    hintStyle:
-          //  TextStyles.regular13.copyWith(color: const Color(0xFF949D9E)),
+          hintStyle: TextStyles.poppins12Regular,
           hintText: 'Find your task here..',
           filled: true,
           fillColor: Color(0xFFF8F8F8),
