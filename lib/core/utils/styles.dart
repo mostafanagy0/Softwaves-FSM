@@ -32,4 +32,10 @@ class TextStyles {
     color: AppColors.primaryColor,
     fontFamily: 'publicSans',
   );
+  static TextStyle poppins14Medium = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: Color(0xFF798693),
+    fontFamily: 'Poppins',
+  );
 }
