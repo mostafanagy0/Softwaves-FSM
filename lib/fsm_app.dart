@@ -14,3 +14,10 @@ class FsmApp extends StatelessWidget {
     );
   }
 }
+
+// Future<bool> isUserLoggedIn() async {
+//   final token = await SharedPrefHelper.getSecuredString(
+//     SheredPrefConstants.accessToken,
+//   );
+//   return token != null && token.isNotEmpty;
+// }

@@ -24,6 +24,7 @@ class AppAuthHelper {
       );
 
       return result.accessToken;
+     
       
     } catch (e) {
       print('Microsoft SSO Login Error: $e');
