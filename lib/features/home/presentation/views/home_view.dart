@@ -1,35 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:fsm/features/home/presentation/widgets/components_widget.dart';
-import 'package:fsm/features/home/presentation/widgets/custom_head_line_and_filtring_widget.dart';
-import 'package:fsm/features/home/presentation/widgets/custom_home_app_bar.dart';
-import 'package:fsm/features/home/presentation/widgets/custom_search_text_filed.dart';
-import 'package:fsm/features/home/presentation/widgets/ticket_widgets/tickets_list_view.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fsm/core/utils/colors.dart';
+import 'package:fsm/features/home/presentation/widgets/home_view_body.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: const Scaffold(
-        backgroundColor: Color(0xFFFFFFFF),
-        body: Padding( 
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomHomeAppBar(),
+  State<HomeView> createState() => _HomeViewState();
+}
 
-              SizedBox(height: 8),
-              CustomSearchTextFiled(),
-              SizedBox(height: 12),
-              CustomHeadLineAndFiltringWidget(),
-              SizedBox(height: 8),
-              ComponentsWidget(numbers: [2, 3, 5]),
-              SizedBox(height: 24),
-              TicketsListView(),
-            ],
-          ),
+class _HomeViewState extends State<HomeView> {
+  int selectedIndex = 0;
+
+  static final List<Widget> pages = <Widget>[
+    HomeViewBody(),
+
+    Center(child: Text('Profile', style: TextStyle(fontSize: 22))),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFFFFFFF),
+      body: SafeArea(child: pages[selectedIndex]),
+      bottomNavigationBar: Container(
+        height: 85,
+        decoration: BoxDecoration(
+          color: Colors.white,
+
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.07),
+              blurRadius: 12,
+              offset: const Offset(0, -2),
+            ),
+          ],
+        ),
+        child: BottomNavigationBar(
+          currentIndex: selectedIndex,
+          onTap: (index) => setState(() => selectedIndex = index),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: AppColors.primaryColor,
+          unselectedItemColor: AppColors.darkGray,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          items: [
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/images/House.svg'),
+              label: 'Home',
+            ),
+
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/images/List.svg'),
+              label: 'More',
+            ),
+          ],
         ),
       ),
     );

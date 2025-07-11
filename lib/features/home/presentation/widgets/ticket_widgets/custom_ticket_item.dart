@@ -11,7 +11,6 @@ class CustomTicketItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 6),
       decoration: BoxDecoration(
         color: AppColors.lightBlue,
         borderRadius: BorderRadius.circular(12),

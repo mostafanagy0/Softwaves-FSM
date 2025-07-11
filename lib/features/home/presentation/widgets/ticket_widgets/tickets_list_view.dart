@@ -6,16 +6,16 @@ class TicketsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: 3,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: const CustomTicketItem(),
-          );
-        },
-      ),
+    return ListView.builder(
+      itemCount: 3,
+      shrinkWrap: true, // علشان ياخد الطول على قد العناصر
+      physics: const NeverScrollableScrollPhysics(), // علشان يمنع الاسكرول
+      itemBuilder: (context, index) {
+        return const Padding(
+          padding: EdgeInsets.only(top: 8),
+          child: CustomTicketItem(),
+        );
+      },
     );
   }
 }
