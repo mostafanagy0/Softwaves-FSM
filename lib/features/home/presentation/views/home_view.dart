@@ -3,6 +3,7 @@ import 'package:fsm/features/home/presentation/widgets/components_widget.dart';
 import 'package:fsm/features/home/presentation/widgets/custom_head_line_and_filtring_widget.dart';
 import 'package:fsm/features/home/presentation/widgets/custom_home_app_bar.dart';
 import 'package:fsm/features/home/presentation/widgets/custom_search_text_filed.dart';
+import 'package:fsm/features/home/presentation/widgets/ticket_widgets/tickets_list_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -12,7 +13,7 @@ class HomeView extends StatelessWidget {
     return SafeArea(
       child: const Scaffold(
         backgroundColor: Color(0xFFFFFFFF),
-        body: Padding(
+        body: Padding( 
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,22 +27,11 @@ class HomeView extends StatelessWidget {
               SizedBox(height: 8),
               ComponentsWidget(numbers: [2, 3, 5]),
               SizedBox(height: 24),
+              TicketsListView(),
             ],
           ),
         ),
       ),
     );
-  }
-}
-class CustomTicketItem extends StatelessWidget {
-  const CustomTicketItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return  Container(decoration: BoxDecoration( 
-color: Color(0xff)
-
-
-    ),);
   }
 }
